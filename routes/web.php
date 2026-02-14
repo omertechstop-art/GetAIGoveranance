@@ -20,7 +20,13 @@ Route::get('/', function () {
         ->take(3)
         ->get();
     
-    return view('userfront.home', compact('categories', 'blogs'));
+    $faqs = \App\Models\QA::where('is_published', true)
+        ->where('is_featured', true)
+        ->orderBy('published_at', 'desc')
+        ->take(5)
+        ->get();
+    
+    return view('userfront.home', compact('categories', 'blogs', 'faqs'));
 })->name('home');
 
 Route::get('/categories', function () {

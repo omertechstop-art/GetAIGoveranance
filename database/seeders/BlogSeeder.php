@@ -17,7 +17,6 @@ class BlogSeeder extends Seeder
                 'title' => 'AI Governance Best Practices, Dos and Don\'ts',
                 'slug' => 'ai-governance-best-practices-dos-and-donts',
                 'excerpt' => 'Learn the essential best practices for implementing AI governance in your organization, including common pitfalls to avoid.',
-                'featured_image' => 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800',
                 'content' => '<h2 id="introduction-to-ai-governance">Introduction to AI Governance</h2>
 <p>AI governance is crucial for organizations deploying AI systems. It encompasses the frameworks, policies, and practices that ensure AI technologies are developed and used responsibly, ethically, and in compliance with regulations.</p>
 
@@ -109,7 +108,6 @@ is_valid = validate_model_output(predictions, ground_truth)
                 'title' => 'Implementing AI Model Monitoring: A Technical Guide',
                 'slug' => 'implementing-ai-model-monitoring-technical-guide',
                 'excerpt' => 'Learn how to implement comprehensive AI model monitoring with code examples and best practices.',
-                'featured_image' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800',
                 'content' => '<h2 id="what-is-ai-model-monitoring">What is AI Model Monitoring?</h2>
 <p>AI model monitoring tracks model performance, data drift, and system health in production environments.</p>
 
@@ -162,7 +160,6 @@ class ModelMonitor:
                 'title' => 'Building Explainable AI Systems with Python',
                 'slug' => 'building-explainable-ai-systems-with-python',
                 'excerpt' => 'Practical guide to implementing explainability in your AI models using SHAP and LIME.',
-                'featured_image' => 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800',
                 'content' => '<h2 id="why-explainability-matters">Why Explainability Matters</h2>
 <p>Explainable AI (XAI) helps stakeholders understand how AI models make decisions.</p>
 
@@ -214,7 +211,6 @@ shap_values = explainer.shap_values(X_test)
                 'title' => 'AI Compliance Automation with CI/CD Pipelines',
                 'slug' => 'ai-compliance-automation-with-cicd-pipelines',
                 'excerpt' => 'Automate AI compliance checks in your deployment pipeline.',
-                'featured_image' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800',
                 'content' => '<h2 id="automating-compliance">Automating Compliance Checks</h2>
 <p>Integrate compliance validation into your CI/CD pipeline.</p>
 
@@ -247,7 +243,6 @@ jobs:
                 'title' => 'Understanding the EU AI Act: Technical Requirements',
                 'slug' => 'understanding-eu-ai-act-technical-requirements',
                 'excerpt' => 'Deep dive into the technical requirements of the EU AI Act.',
-                'featured_image' => 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800',
                 'content' => '<h2 id="eu-ai-act-overview">EU AI Act Overview</h2>
 <p>The EU AI Act introduces risk-based regulations for AI systems.</p>
 
@@ -296,7 +291,6 @@ jobs:
                 'title' => 'Bias Detection and Mitigation in Machine Learning',
                 'slug' => 'bias-detection-and-mitigation-in-machine-learning',
                 'excerpt' => 'Comprehensive guide to identifying and addressing bias in ML models.',
-                'featured_image' => 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800',
                 'content' => '<h2>Understanding Bias in ML</h2>
 <p>Bias in machine learning can lead to unfair outcomes and discriminatory decisions.</p>
 
@@ -318,7 +312,6 @@ print(f"Disparate Impact: {metric.disparate_impact()}")
                 'title' => 'Data Privacy in AI: GDPR Compliance Strategies',
                 'slug' => 'data-privacy-in-ai-gdpr-compliance-strategies',
                 'excerpt' => 'Navigate GDPR requirements for AI systems with practical implementation strategies.',
-                'featured_image' => 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800',
                 'content' => '<h2>GDPR and AI</h2>
 <p>GDPR imposes strict requirements on AI systems that process personal data.</p>
 
@@ -339,7 +332,6 @@ print(f"Disparate Impact: {metric.disparate_impact()}")
                 'title' => 'AI Risk Assessment Framework: A Practical Approach',
                 'slug' => 'ai-risk-assessment-framework-practical-approach',
                 'excerpt' => 'Step-by-step guide to conducting comprehensive AI risk assessments.',
-                'featured_image' => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800',
                 'content' => '<h2>Risk Assessment Process</h2>
 <p>Systematic approach to identifying and evaluating AI risks.</p>
 

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Q&A - AI Governance Hub')
+@section('title', 'Q & A - AI Governance Hub')
 
 @section('hero')
 <div class="bg-white py-16">
@@ -13,7 +13,7 @@
             </div>
             
             <h1 class="font-playfair text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                AI Governance <span class="text-blue-600">Q&A</span>
+                AI Governance <span class="text-blue-600">Q & A</span>
             </h1>
             
             <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
@@ -37,16 +37,23 @@
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="max-w-4xl mx-auto">
-        <div class="space-y-6">
-            @forelse($qas as $qa)
-            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                <h3 class="font-playfair text-xl font-bold text-gray-900 mb-4">{{ $qa->question }}</h3>
-                <p class="font-futura text-gray-600 mb-4 leading-relaxed">{{ $qa->answer }}</p>
-                <div class="flex items-center gap-4 text-sm text-gray-500">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+        <div class="space-y-4">
+            @forelse($qas as $index => $qa)
+            <div class="faq-item bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div class="faq-header flex items-center justify-between w-full cursor-pointer p-6" data-index="{{ $index }}">
+                    <h3 class="font-playfair text-xl font-bold text-gray-900 pr-8">{{ $qa->question }}</h3>
+                    <svg class="faq-icon flex-shrink-0 transition-transform duration-300 ease-in-out" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 7.5l5 5 5-5" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
-                    <span>{{ $qa->published_at ? $qa->published_at->format('M j, Y') : $qa->created_at->format('M j, Y') }}</span>
+                </div>
+                <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                    <p class="font-futura text-gray-600 px-6 pb-6 leading-relaxed">{{ $qa->answer }}</p>
+                    <div class="flex items-center gap-4 text-sm text-gray-500 px-6 pb-6">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <span>{{ $qa->published_at ? $qa->published_at->format('M j, Y') : $qa->created_at->format('M j, Y') }}</span>
+                    </div>
                 </div>
             </div>
             @empty
@@ -57,4 +64,25 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.faq-header').forEach((header) => {
+            header.addEventListener('click', () => {
+                const parent = header.closest('.faq-item');
+                const answer = parent.querySelector('.faq-answer');
+                const icon = parent.querySelector('.faq-icon');
+                const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+                
+                if (isOpen) {
+                    answer.style.maxHeight = '0px';
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+    });
+</script>
 @endsection

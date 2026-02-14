@@ -150,7 +150,25 @@
                 <p class="font-futura text-lg text-gray-600">Everything you need to know about GetAIGovernance</p>
             </div>
             
-            <div id="faqContainer" class="space-y-4"></div>
+            <div class="space-y-4">
+                @forelse($faqs as $index => $faq)
+                <div class="faq-item bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                    <div class="faq-header flex items-center justify-between w-full cursor-pointer p-6" data-index="{{ $index }}">
+                        <h3 class="font-futura text-base font-semibold text-gray-900 pr-8">{{ $faq->question }}</h3>
+                        <svg class="faq-icon flex-shrink-0 transition-transform duration-300 ease-in-out" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 7.5l5 5 5-5" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <p class="font-futura text-gray-600 px-6 pb-6">{{ $faq->answer }}</p>
+                    </div>
+                </div>
+                @empty
+                <div class="text-center py-12 text-gray-500">
+                    No FAQs available yet.
+                </div>
+                @endforelse
+            </div>
         </div>
     </section>
 
@@ -158,7 +176,7 @@
     <section class="py-8 lg:py-16 bg-white">
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="font-playfair text-3xl text-black sm:text-4xl lg:text-5xl mb-4">Trusted insights, <span class="font-playfair text-blue-600">updated daily</span></h2>
+                <h2 class="font-playfair text-3xl font-bold text-black sm:text-4xl lg:text-5xl mb-4">Trusted insights, <span class="font-playfair text-blue-600">updated daily</span></h2>
                 <p class="font-futura text-lg text-gray-600">Exclusive research from our expert analysts.</p>
             </div>
             
@@ -194,52 +212,12 @@
 @endsection
 
 <script>
-    const faqsData = [
-        {
-            question: 'What makes GetAIGovernance different?',
-            answer: 'Founded in 2024, GetAIGovernance is the only website dedicated exclusively to researching, testing, and comparing tools that help organizations govern, monitor, and comply with AI regulations. Unlike other comparison sites, we focus solely on AI governance, compliance, and security solutions, providing unbiased insights based on hands-on testing.'
-        },
-        {
-            question: 'How does GetAIGovernance make money?',
-            answer: 'GetAIGovernance is an advertising-supported publisher and comparison service. We are compensated for featured placement of sponsored products and for connecting prospective leads to service providers. This compensation does not impact our objectivity or review process.'
-        },
-        {
-            question: 'Who are GetAIGovernance advisors?',
-            answer: 'GetAIGovernance employs top AI technology and governance experts. We are a group of specialists with deep understanding of AI governance, compliance, and monitoring industries, bolstered by hands-on research and continuing education in AI safety and regulation.'
-        },
-        {
-            question: 'Do companies pay GetAIGovernance to review their products?',
-            answer: 'No, companies do not pay us to review their products or write our content. Our team of editors maintains 100% editorial independence and researches and decides on relevant AI governance topics to produce.'
-        },
-        {
-            question: 'What is AI Governance?',
-            answer: 'AI Governance refers to the frameworks, policies, and practices that ensure AI systems are developed, deployed, and managed responsibly. It includes risk management, compliance monitoring, ethical AI practices, and regulatory adherence to ensure AI systems are safe, fair, and transparent.'
-        }
-    ];
-
     document.addEventListener('DOMContentLoaded', function() {
-        const faqContainer = document.getElementById('faqContainer');
-
-        faqContainer.innerHTML = faqsData.map((faq, index) => `
-        <div class="faq-item bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow" data-index="${index}">
-            <div class="faq-header flex items-center justify-between w-full cursor-pointer p-6">
-                <h3 class="font-futura text-base font-semibold text-gray-900 pr-8">${faq.question}</h3>
-                <svg class="faq-icon flex-shrink-0 transition-transform duration-300 ease-in-out" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 7.5l5 5 5-5" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </div>
-            <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
-                <p class="font-futura text-gray-600 px-6 pb-6">${faq.answer}</p>
-            </div>
-        </div>
-        `).join('');
-
-        let openIndex = null;
-
-        document.querySelectorAll('.faq-header').forEach((header, index) => {
+        document.querySelectorAll('.faq-header').forEach((header) => {
             header.addEventListener('click', () => {
-                const answer = document.querySelectorAll('.faq-answer')[index];
-                const icon = document.querySelectorAll('.faq-icon')[index];
+                const parent = header.closest('.faq-item');
+                const answer = parent.querySelector('.faq-answer');
+                const icon = parent.querySelector('.faq-icon');
                 const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
                 
                 if (isOpen) {
