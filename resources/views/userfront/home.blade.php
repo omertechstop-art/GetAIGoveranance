@@ -63,7 +63,7 @@
 
 @section('content')
     <!-- How It Works Section -->
-    <section class="py-8 bg-white sm:py-12 lg:py-16 -mt-4 sm:-mt-8">
+    <section class="py-16 bg-white sm:py-20 lg:py-24">
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="max-w-2xl mx-auto text-center">
                 <h2 class="font-playfair text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">How does it <span class="font-playfair text-blue-600">work?</span></h2>
@@ -143,16 +143,14 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-16 bg-white">
-        <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="flex flex-col items-center text-center max-w-4xl mx-auto">
-                <!-- FAQ Content -->
-                <div class="flex flex-col items-start text-left">
-                    <h1 class="font-playfair text-3xl md:text-4xl font-semibold mt-2 mb-10">Frequently Asked <span class="font-playfair text-blue-600">Questions</span></h1>
-
-                    <div id="faqContainer" class="max-w-xl w-full mt-6 flex flex-col gap-4 items-start text-left"></div>
-                </div>
+    <section class="py-16 bg-gray-50">
+        <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-playfair text-3xl font-bold text-black sm:text-4xl lg:text-5xl mb-4">Frequently Asked <span class="font-playfair text-blue-600">Questions</span></h2>
+                <p class="font-futura text-lg text-gray-600">Everything you need to know about GetAIGovernance</p>
             </div>
+            
+            <div id="faqContainer" class="space-y-4"></div>
         </div>
     </section>
 
@@ -165,69 +163,35 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <article class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+                @forelse($blogs as $blog)
+                <a href="{{ route('blog.show', $blog->slug) }}" class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden border border-gray-100 block">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="AI Governance" class="w-full h-48 object-cover">
-                        <span class="absolute top-4 left-4 text-sm font-medium text-blue-600 bg-white px-3 py-1 rounded-full">AI Governance</span>
+                        <img src="{{ $blog->featured_image_url ?? $blog->featured_image }}" alt="{{ $blog->title }}" class="w-full h-48 object-cover">
+                        @if($blog->category)
+                        <span class="absolute top-4 left-4 text-sm font-medium text-blue-600 bg-white px-3 py-1 rounded-full">{{ $blog->category->name }}</span>
+                        @endif
                     </div>
                     <div class="p-6">
-                        <p class="text-sm text-gray-500 mb-3">John Smith • Feb 3, 2026</p>
-                        <h3 class="font-futura text-sm font-bold text-gray-900 mb-4">AI Governance Best Practices, Dos and Don'ts</h3>
-                        <a href="#" class="inline-flex items-center gap-2 text-blue-600 font-medium hover:text-blue-700 transition-colors">
+                        <p class="text-sm text-gray-500 mb-3">{{ $blog->published_at ? $blog->published_at->format('M j, Y') : $blog->created_at->format('M j, Y') }}</p>
+                        <h3 class="font-futura text-sm font-bold text-gray-900 mb-4">{{ $blog->title }}</h3>
+                        <span class="inline-flex items-center gap-2 text-blue-600 font-medium hover:text-blue-700 transition-colors">
                             <span>Read More</span>
                             <svg width="14" height="14" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3.959 9.5h11.083m0 0L9.501 3.958M15.042 9.5l-5.541 5.54" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </a>
+                        </span>
                     </div>
-                </article>
-                
-                <article class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="AI Compliance" class="w-full h-48 object-cover">
-                        <span class="absolute top-4 left-4 text-sm font-medium text-blue-600 bg-white px-3 py-1 rounded-full">AI Compliance</span>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-sm text-gray-500 mb-3">Sarah Johnson • Feb 2, 2026</p>
-                        <h3 class="font-futura text-sm font-bold text-gray-900 mb-4">AI Compliance Tools Pricing Plans, Features & Best Alternatives</h3>
-                        <a href="#" class="inline-flex items-center gap-2 text-blue-600 font-medium hover:text-blue-700 transition-colors">
-                            <span>Read More</span>
-                            <svg width="14" height="14" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3.959 9.5h11.083m0 0L9.501 3.958M15.042 9.5l-5.541 5.54" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-                
-                <article class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="AI Monitoring" class="w-full h-48 object-cover">
-                        <span class="absolute top-4 left-4 text-sm font-medium text-blue-600 bg-white px-3 py-1 rounded-full">AI Monitoring</span>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-sm text-gray-500 mb-3">Mike Davis • Jan 29, 2026</p>
-                        <h3 class="font-futura text-sm font-bold text-gray-900 mb-4">What is AI Model Monitoring and How to Improve It?</h3>
-                        <a href="#" class="inline-flex items-center gap-2 text-blue-600 font-medium hover:text-blue-700 transition-colors">
-                            <span>Read More</span>
-                            <svg width="14" height="14" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3.959 9.5h11.083m0 0L9.501 3.958M15.042 9.5l-5.541 5.54" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </a>
-                    </div>
-                </article>
+                </a>
+                @empty
+                <div class="col-span-full text-center py-12 text-gray-500">
+                    No articles available yet.
+                </div>
+                @endforelse
             </div>
         </div>
     </section>
 
 @endsection
-
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-    * {
-        font-family: 'Poppins', sans-serif;
-    }
-</style>
 
 <script>
     const faqsData = [
@@ -257,16 +221,16 @@
         const faqContainer = document.getElementById('faqContainer');
 
         faqContainer.innerHTML = faqsData.map((faq, index) => `
-        <div class="faq-item flex flex-col items-start w-full" data-index="${index}">
-            <div class="faq-header flex items-center justify-between w-full cursor-pointer border border-indigo-100 p-4 rounded transition-all">
-                <h2 class="text-sm">${faq.question}</h2>
-                <svg class="faq-icon transition-all duration-500 ease-in-out" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="m4.5 7.2 3.793 3.793a1 1 0 0 0 1.414 0L13.5 7.2" stroke="#1D293D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        <div class="faq-item bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow" data-index="${index}">
+            <div class="faq-header flex items-center justify-between w-full cursor-pointer p-6">
+                <h3 class="font-futura text-base font-semibold text-gray-900 pr-8">${faq.question}</h3>
+                <svg class="faq-icon flex-shrink-0 transition-transform duration-300 ease-in-out" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 7.5l5 5 5-5" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </div>
-            <p class="faq-answer text-sm text-slate-500 px-4 overflow-hidden max-h-0 opacity-0 -translate-y-2 transition-all duration-500 ease-in-out">
-                ${faq.answer}
-            </p>
+            <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                <p class="font-futura text-gray-600 px-6 pb-6">${faq.answer}</p>
+            </div>
         </div>
         `).join('');
 
@@ -276,15 +240,15 @@
             header.addEventListener('click', () => {
                 const answer = document.querySelectorAll('.faq-answer')[index];
                 const icon = document.querySelectorAll('.faq-icon')[index];
+                const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
                 
-                const isOpen = answer.classList.contains('opacity-100');
-                answer.classList.toggle('opacity-100', !isOpen);
-                answer.classList.toggle('max-h-[300px]', !isOpen);
-                answer.classList.toggle('translate-y-0', !isOpen);
-                answer.classList.toggle('pt-4', !isOpen);
-                answer.classList.toggle('max-h-0', isOpen);
-                answer.classList.toggle('-translate-y-2', isOpen);
-                icon.classList.toggle('rotate-180', !isOpen);
+                if (isOpen) {
+                    answer.style.maxHeight = '0px';
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    icon.style.transform = 'rotate(180deg)';
+                }
             });
         });
     });

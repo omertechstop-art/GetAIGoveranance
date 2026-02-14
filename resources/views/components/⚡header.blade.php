@@ -14,12 +14,12 @@ new class extends Component
         <img src="{{ asset('logo-check-check.png') }}" alt="GetAIGovernance" class="h-8 md:h-12 w-auto max-h-full">
     </a>
     
-    <div class="hidden xl:flex items-center gap-8 font-futura absolute left-1/2 transform -translate-x-1/2">
-        <a href="{{ route('home') }}" class="hover:text-blue-600 transition-colors font-futura">
+    <div class="hidden xl:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
+        <a href="{{ route('home') }}" class="hover:text-blue-600 transition-colors font-medium">
             Home
         </a>
         
-        <a href="{{ route('categories') }}" class="hover:text-blue-600 transition-colors font-futura">
+        <a href="{{ route('categories') }}" class="hover:text-blue-600 transition-colors font-medium">
             Marketplace
         </a>
         
@@ -29,7 +29,7 @@ new class extends Component
         <!-- Resources Mega Menu -->
         <livewire:mega-menu type="blog" title="Resources" />
         
-        <a href="{{ route('qa') }}" class="hover:text-blue-600 transition-colors font-futura">
+        <a href="{{ route('qa') }}" class="hover:text-blue-600 transition-colors font-medium">
             Q&A
         </a>
     </div>

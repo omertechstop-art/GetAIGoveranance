@@ -13,7 +13,14 @@ Route::get('/', function () {
         ->orderBy('sort_order')
         ->get();
     
-    return view('userfront.home', compact('categories'));
+    $blogs = \App\Models\Blog::with('category')
+        ->where('is_published', true)
+        ->where('is_featured', true)
+        ->orderBy('published_at', 'desc')
+        ->take(3)
+        ->get();
+    
+    return view('userfront.home', compact('categories', 'blogs'));
 })->name('home');
 
 Route::get('/categories', function () {
@@ -42,6 +49,7 @@ Route::get('/blog', function () {
     
     $subcategories = \App\Models\BlogCategory::where('is_active', true)
         ->whereNotNull('parent_id')
+        ->with('parent')
         ->orderBy('sort_order')
         ->get();
     
@@ -57,7 +65,11 @@ Route::get('/compare', function () {
 })->name('compare');
 
 Route::get('/qa', function () {
-    return view('userfront.qa');
+    $qas = \App\Models\QA::where('is_published', true)
+        ->orderBy('published_at', 'desc')
+        ->get();
+    
+    return view('userfront.qa', compact('qas'));
 })->name('qa');
 
 Route::get('/api/blogs', function () {

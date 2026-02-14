@@ -81,7 +81,7 @@
                                 @if($category->children->count() > 0)
                                     <div x-show="openSubcategories['blog_{{ $category->id }}']" x-transition class="ml-4 mt-1 space-y-1">
                                         @foreach($category->children as $subcategory)
-                                            <a href="{{ route('blog') }}?category={{ $subcategory->slug }}" wire:navigate @click="isOpen = false" 
+                                            <a href="{{ route('blog.category.subcategory', [$category->slug, $subcategory->slug]) }}" wire:navigate @click="isOpen = false" 
                                                class="flex items-center justify-between px-4 py-1 text-xs text-gray-500 hover:text-blue-600 hover:bg-gray-50 rounded transition-colors">
                                                 <span>{{ $subcategory->name }}</span>
                                                 @if($subcategory->published_blogs_count > 0)
@@ -113,7 +113,7 @@
                         <a href="{{ route('categories') }}" wire:navigate @click="isOpen = false" class="block px-4 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors">
                             All Categories
                         </a>
-                        @foreach($blogCategories as $category)
+                        @foreach($marketplaceCategories as $category)
                             <div>
                                 <button @click="openSubcategories['cat_{{ $category->id }}'] = !openSubcategories['cat_{{ $category->id }}']"
                                         class="w-full flex items-center justify-between px-4 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors">
@@ -127,12 +127,9 @@
                                 @if($category->children->count() > 0)
                                     <div x-show="openSubcategories['cat_{{ $category->id }}']" x-transition class="ml-4 mt-1 space-y-1">
                                         @foreach($category->children as $subcategory)
-                                            <a href="{{ route('blog') }}?category={{ $subcategory->slug }}" wire:navigate @click="isOpen = false" 
-                                               class="flex items-center justify-between px-4 py-1 text-xs text-gray-500 hover:text-blue-600 hover:bg-gray-50 rounded transition-colors">
-                                                <span>{{ $subcategory->name }}</span>
-                                                @if($subcategory->published_blogs_count > 0)
-                                                    <span class="text-xs bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded-full">{{ $subcategory->published_blogs_count }}</span>
-                                                @endif
+                                            <a href="{{ route('category.subcategory', [$category->slug, $subcategory->slug]) }}" wire:navigate @click="isOpen = false" 
+                                               class="block px-4 py-1 text-xs text-gray-500 hover:text-blue-600 hover:bg-gray-50 rounded transition-colors">
+                                                {{ $subcategory->name }}
                                             </a>
                                         @endforeach
                                     </div>

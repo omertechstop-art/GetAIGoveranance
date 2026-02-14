@@ -4,7 +4,7 @@
      class="relative">
     
     <!-- Menu Trigger -->
-    <button class="hover:text-blue-600 transition-colors flex items-center gap-1.5 py-2 group">
+    <button class="hover:text-blue-600 transition-colors flex items-center gap-1.5 py-2 group font-medium">
         {{ $title }}
         <svg class="w-4 h-4 transition-all duration-200 group-hover:text-blue-600" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -95,7 +95,7 @@
         <!-- Header Section -->
         <div class="bg-white px-4 sm:px-6 lg:px-8 py-4 sm:py-6 border-b border-gray-100">
             <div class="text-center">
-                <h2 class="font-playfair text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-1 sm:mb-2">Resources & Insights</h2>
+                <h2 class="font-playfair text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-1 sm:mb-2">Resources and Insights</h2>
                 <p class="font-futura text-sm sm:text-base text-gray-600 max-w-2xl mx-auto hidden sm:block">Explore articles, guides, and insights on AI governance and best practices</p>
             </div>
         </div>

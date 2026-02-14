@@ -93,6 +93,7 @@ is_valid = validate_model_output(predictions, ground_truth)
 <p>Effective AI governance requires ongoing commitment, diverse perspectives, and robust frameworks.</p>',
                 'read_time' => 15,
                 'is_published' => true,
+                'is_featured' => true,
                 'published_at' => now()->subDays(1),
                 'author_name' => 'Sarah Johnson',
                 'table_of_contents' => [
@@ -147,7 +148,9 @@ class ModelMonitor:
 </ol>',
                 'read_time' => 12,
                 'is_published' => true,
+                'is_featured' => true,
                 'published_at' => now()->subDays(2),
+                'author_name' => 'Michael Chen',
                 'table_of_contents' => [
                     'What is AI Model Monitoring?',
                     'Setting Up Monitoring',
@@ -198,7 +201,9 @@ shap_values = explainer.shap_values(X_test)
 </table>',
                 'read_time' => 10,
                 'is_published' => true,
+                'is_featured' => true,
                 'published_at' => now()->subDays(3),
+                'author_name' => 'Emily Rodriguez',
                 'table_of_contents' => [
                     'Why Explainability Matters',
                     'Implementing SHAP',
@@ -229,7 +234,9 @@ jobs:
 <p>Run compliance checks on every commit to catch issues early.</p>',
                 'read_time' => 8,
                 'is_published' => true,
+                'is_featured' => false,
                 'published_at' => now()->subDays(4),
+                'author_name' => 'David Kim',
                 'table_of_contents' => [
                     'Automating Compliance Checks',
                     'GitHub Actions Workflow',
@@ -276,12 +283,79 @@ jobs:
 </table>',
                 'read_time' => 14,
                 'is_published' => true,
+                'is_featured' => false,
                 'published_at' => now()->subDays(5),
+                'author_name' => 'Anna Schmidt',
                 'table_of_contents' => [
                     'EU AI Act Overview',
                     'Technical Documentation Requirements',
                     'Requirements Summary',
                 ],
+            ],
+            [
+                'title' => 'Bias Detection and Mitigation in Machine Learning',
+                'slug' => 'bias-detection-and-mitigation-in-machine-learning',
+                'excerpt' => 'Comprehensive guide to identifying and addressing bias in ML models.',
+                'featured_image' => 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800',
+                'content' => '<h2>Understanding Bias in ML</h2>
+<p>Bias in machine learning can lead to unfair outcomes and discriminatory decisions.</p>
+
+<h2>Detection Techniques</h2>
+<pre><code class="language-python">from aif360.datasets import BinaryLabelDataset
+from aif360.metrics import BinaryLabelDatasetMetric
+
+metric = BinaryLabelDatasetMetric(dataset)
+print(f"Disparate Impact: {metric.disparate_impact()}")
+</code></pre>',
+                'read_time' => 11,
+                'is_published' => true,
+                'is_featured' => false,
+                'published_at' => now()->subDays(6),
+                'author_name' => 'James Wilson',
+                'table_of_contents' => ['Understanding Bias in ML', 'Detection Techniques'],
+            ],
+            [
+                'title' => 'Data Privacy in AI: GDPR Compliance Strategies',
+                'slug' => 'data-privacy-in-ai-gdpr-compliance-strategies',
+                'excerpt' => 'Navigate GDPR requirements for AI systems with practical implementation strategies.',
+                'featured_image' => 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800',
+                'content' => '<h2>GDPR and AI</h2>
+<p>GDPR imposes strict requirements on AI systems that process personal data.</p>
+
+<h2>Key Requirements</h2>
+<ul>
+<li>Right to explanation</li>
+<li>Data minimization</li>
+<li>Purpose limitation</li>
+</ul>',
+                'read_time' => 13,
+                'is_published' => true,
+                'is_featured' => false,
+                'published_at' => now()->subDays(7),
+                'author_name' => 'Sophie Martin',
+                'table_of_contents' => ['GDPR and AI', 'Key Requirements'],
+            ],
+            [
+                'title' => 'AI Risk Assessment Framework: A Practical Approach',
+                'slug' => 'ai-risk-assessment-framework-practical-approach',
+                'excerpt' => 'Step-by-step guide to conducting comprehensive AI risk assessments.',
+                'featured_image' => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800',
+                'content' => '<h2>Risk Assessment Process</h2>
+<p>Systematic approach to identifying and evaluating AI risks.</p>
+
+<h2>Risk Categories</h2>
+<ol>
+<li>Technical risks</li>
+<li>Operational risks</li>
+<li>Compliance risks</li>
+<li>Reputational risks</li>
+</ol>',
+                'read_time' => 16,
+                'is_published' => true,
+                'is_featured' => false,
+                'published_at' => now()->subDays(8),
+                'author_name' => 'Robert Taylor',
+                'table_of_contents' => ['Risk Assessment Process', 'Risk Categories'],
             ],
         ];
 

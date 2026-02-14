@@ -251,7 +251,7 @@
                         </h3>
                         <div class="flex flex-wrap gap-2">
                             @foreach($blog->category->children as $subcategory)
-                            <a href="{{ route('blog.subcategory.show', [$blog->category->slug, $subcategory->slug]) }}" class="inline-block px-3 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded-full hover:bg-blue-100 hover:text-blue-600 transition-colors">
+                            <a href="{{ route('blog.category.subcategory', [$blog->category->slug, $subcategory->slug]) }}" class="inline-block px-3 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded-full hover:bg-blue-100 hover:text-blue-600 transition-colors">
                                 {{ $subcategory->name }}
                             </a>
                             @endforeach

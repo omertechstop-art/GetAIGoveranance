@@ -9,17 +9,23 @@
     @livewireStyles
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-        * {
+        body {
             font-family: 'Futura', 'Arial', sans-serif;
         }
 
         .font-playfair {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair Display', serif !important;
         }
 
         .font-futura {
-            font-family: 'Futura', 'Arial', sans-serif;
+            font-family: 'Futura', 'Arial', sans-serif !important;
+        }
+        
+        /* Header uses Inter font for modern look */
+        #main-header {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
     </style>
 </head>

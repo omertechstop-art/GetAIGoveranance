@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
-@section('title', 'AI Governance Blog - Insights & Best Practices | GetAIGovernance')
+@section('title', 'AI Governance Blog - Insights and Best Practices | GetAIGovernance')
 
 @section('hero')
 <section class="relative bg-white">
         <div class="relative z-10 px-4 py-12 sm:py-16 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto lg:py-20 xl:py-28 lg:grid lg:grid-cols-2 lg:pointer-events-none">
             <div class="lg:pr-8 lg:pointer-events-auto">
                 <div class="max-w-md mx-auto sm:max-w-lg lg:mx-0">
-                    <h1 class="text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl">
-                        AI Governance <span class="inline"><img class="inline w-auto h-8 sm:h-10 lg:h-12" src="https://landingfoliocom.imgix.net/store/collection/clarity-blog/images/hero/4/shape-1.svg" alt="shape-1" /></span> Insights & Best Practices
+                    <h1 class="font-playfair text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl">
+                        AI Governance <span class="inline"><img class="inline w-auto h-8 sm:h-10 lg:h-12" src="https://landingfoliocom.imgix.net/store/collection/clarity-blog/images/hero/4/shape-1.svg" alt="shape-1" /></span> Insights and Best Practices
                         <span class="inline"><img class="inline w-auto h-8 sm:h-10 lg:h-11" src="https://landingfoliocom.imgix.net/store/collection/clarity-blog/images/hero/4/shape-2.svg" alt="shape-2" /></span>
                     </h1>
-                    <p class="mt-6 text-base font-normal leading-7 text-gray-900">Stay ahead with expert perspectives on AI compliance, ethics, and governance. Explore our curated articles on responsible AI implementation.</p>
+                    <p class="font-futura mt-6 text-base font-normal leading-7 text-gray-900">Stay ahead with expert perspectives on AI compliance, ethics, and governance. Explore our curated articles on responsible AI implementation.</p>
                     <svg class="w-auto h-4 mt-8 text-gray-300" viewbox="0 0 172 16" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 11 1)"></line>
                         <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 46 1)"></line>
@@ -38,7 +38,7 @@
                         <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 109 1)"></line>
                         <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 144 1)"></line>
                     </svg>
-                    <p class="mt-8 text-base font-bold text-gray-900">Explore Topics</p>
+                    <p class="font-futura mt-8 text-base font-bold text-gray-900">Explore Topics</p>
                     <div class="flex flex-wrap gap-3 mt-4">
                         <button class="category-filter px-4 py-2 rounded-full text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition-all" data-category="all">All Topics</button>
                         @foreach($subcategories as $subcategory)
@@ -60,8 +60,8 @@
                                 <img class="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110" src="{{ $blog->featured_image_url ?? $blog->featured_image }}" alt="{{ $blog->title }}" />
                             </div>
                             <div class="flex-1 px-4 py-5 sm:p-6">
-                                <p class="text-lg font-bold text-gray-900 line-clamp-2">{{ $blog->title }}</p>
-                                <p class="mt-3 text-sm font-normal leading-6 text-gray-500 line-clamp-3">{{ Str::limit(strip_tags($blog->content), 100) }}</p>
+                                <p class="font-futura text-lg font-bold text-gray-900 line-clamp-2">{{ $blog->title }}</p>
+                                <p class="font-futura mt-3 text-sm font-normal leading-6 text-gray-500 line-clamp-3">{{ Str::limit(strip_tags($blog->content), 100) }}</p>
                             </div>
                             <div class="px-4 py-5 mt-auto border-t border-gray-100 sm:px-6">
                                 <div class="flex items-center justify-between">
@@ -102,7 +102,7 @@
         </div>
         <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach($blogs as $blog)
-            <article class="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
+            <a href="{{ route('blog.show', $blog->slug) }}" class="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 block">
                 <div class="relative overflow-hidden">
                     <img src="{{ $blog->featured_image_url ?? $blog->featured_image }}" alt="{{ $blog->title }}" class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300">
                     @if($blog->category)
@@ -117,14 +117,14 @@
                         <span>{{ $blog->published_at ? $blog->published_at->format('M j, Y') : $blog->created_at->format('M j, Y') }}</span>
                     </div>
                     <h3 class="font-playfair text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">{{ $blog->title }}</h3>
-                    <a href="{{ route('blog.show', $blog->slug) }}" class="inline-flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all">
+                    <span class="inline-flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all">
                         <span>Read More</span>
                         <svg width="16" height="16" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M3.959 9.5h11.083m0 0L9.501 3.958M15.042 9.5l-5.541 5.54" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                    </a>
+                    </span>
                 </div>
-            </article>
+            </a>
             @endforeach
         </div>
         
@@ -159,8 +159,9 @@ function renderBlogs(blogs) {
     articleCount.textContent = `${blogs.length} article${blogs.length !== 1 ? 's' : ''}`;
     
     blogs.forEach(blog => {
-        const article = document.createElement('article');
-        article.className = 'group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100';
+        const article = document.createElement('a');
+        article.href = `/blog/${blog.slug}`;
+        article.className = 'group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 block';
         article.innerHTML = `
             <div class="relative overflow-hidden">
                 <img src="${blog.featured_image_url || blog.featured_image}" alt="${blog.title}" class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300">
@@ -174,12 +175,12 @@ function renderBlogs(blogs) {
                     <span>${new Date(blog.published_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                 </div>
                 <h3 class="font-playfair text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">${blog.title}</h3>
-                <a href="/blog/${blog.slug}" class="inline-flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all">
+                <span class="inline-flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all">
                     <span>Read More</span>
                     <svg width="16" height="16" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3.959 9.5h11.083m0 0L9.501 3.958M15.042 9.5l-5.541 5.54" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
-                </a>
+                </span>
             </div>
         `;
         grid.appendChild(article);
@@ -211,9 +212,14 @@ document.querySelectorAll('.category-filter').forEach(btn => {
         const categoryId = this.dataset.category;
         
         if (categoryId !== 'all') {
-            const category = @json($subcategories).find(c => c.id == categoryId);
-            if (category) {
-                window.location.href = `/blog/category/${category.slug}`;
+            const subcategory = @json($subcategories).find(c => c.id == categoryId);
+            if (subcategory && subcategory.parent_id) {
+                const parentSlug = subcategory.parent ? subcategory.parent.slug : '';
+                if (parentSlug) {
+                    window.location.href = `/blog/category/${parentSlug}/${subcategory.slug}`;
+                } else {
+                    window.location.href = `/blog/category/${subcategory.slug}`;
+                }
                 return;
             }
         }

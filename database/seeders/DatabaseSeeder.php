@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             MarketplaceCategorySeeder::class,
             VendorSeeder::class,
             BlogSeeder::class,
+            QASeeder::class,
         ]);
 
         User::factory()->create([

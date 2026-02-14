@@ -53,15 +53,10 @@ new class extends Component
             </div>
         </div>
     </div>
-    <div class="flex flex-col md:flex-row items-center justify-between gap-4 py-4 border-t mt-6 border-slate-200">
-        <p class="text-center">
-            Copyright 2024 © GetAIGovernance All Right Reserved.
+    <div class="flex items-center justify-center py-4 border-t mt-6 border-slate-200">
+        <p class="text-center text-sm">
+            Copyright 2024 ©<br class="sm:hidden"> GetAIGovernance All Right Reserved.
         </p>
-        <div class="flex items-center gap-4">
-            <a href="/" class="font-semibold">Privacy Policy</a>
-            <a href="/" class="font-semibold">Terms of Service</a>
-            <a href="/" class="font-semibold">Cookie Policy</a>
-        </div>
     </div>
     </div>
 </footer>
